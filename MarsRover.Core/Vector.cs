@@ -36,11 +36,4 @@ namespace MarsRover.Core
 
         public Direction Direction {get; private set;}
     }
-
-    public enum Direction {
-        N,
-        S,
-        E,
-        W
-    }
 }
