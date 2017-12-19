@@ -7,7 +7,7 @@ namespace MarsRover.Core
         public Plateau(string input) 
         {
             if (string.IsNullOrWhiteSpace(input))
-                throw new ArgumentException("input must be specified");
+                throw new ArgumentException("No plateau dimensions have been specified");
 
             string[] inputParts = input.Split(' ');
 

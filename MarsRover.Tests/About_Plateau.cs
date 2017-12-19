@@ -2,7 +2,7 @@ using System;
 using MarsRover.Core;
 using Xunit;
 
-namespace MarsRover.Tests 
+namespace MarsRover.Tests
 {
     public class About_Plateau
     {
