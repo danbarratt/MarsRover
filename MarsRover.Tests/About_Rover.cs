@@ -15,5 +15,22 @@ namespace MarsRover.Tests
             Assert.Equal(Direction.E, rover.Position.Direction);
         }
 
+        [Theory]
+        [InlineData("",  "0 0 N")]
+        [InlineData(" ", "0 0 N")]
+        [InlineData("L", "0 0 W")]
+        [InlineData("R", "0 0 E")]
+        [InlineData("M", "0 1 N")]
+        [InlineData("RML", "1 0 N")]
+        [InlineData("MRML", "1 1 N")]
+        public void when_given_valid_move_instructions(string instructions, string finalLocation) 
+        {
+            Rover rover = new Rover("0 0 N");
+
+            rover.Move(instructions);
+
+            Assert.Equal(finalLocation, rover.Position.ToString());
+        }
+
     }
 }
