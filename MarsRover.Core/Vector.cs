@@ -10,9 +10,24 @@ namespace MarsRover.Core
                 return;
 
             string[] inputParts = input.Split(' ');
-            X = int.Parse(inputParts[0]);
-            Y = int.Parse(inputParts[1]);
+            X = ParseNonNegativeInteger(inputParts[0], "X");
+            Y = ParseNonNegativeInteger(inputParts[1], "Y");
             Direction = (Direction) Enum.Parse(typeof(Direction), inputParts[2]);
+        }
+
+        private int ParseNonNegativeInteger(string input, string paramName) {
+            int theValue;
+            try {
+                theValue = int.Parse(input);
+            }
+            catch (FormatException ex) {
+                throw new System.ArgumentException("Could not read " + paramName, ex);
+            }
+
+            if (theValue < 0)
+                throw new System.ArgumentException("Value must not be less than 0: " + paramName);
+
+            return theValue;
         }
 
         public int X {get; private set;}
