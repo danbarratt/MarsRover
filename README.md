@@ -15,7 +15,7 @@ Each rover will be finished sequentially, which means that the second rover won'
 OUTPUT:
 The output for each rover should be its final co-ordinates and heading.
 
-### INPUT AND OUTPUT
+## INPUT AND OUTPUT
 
 Test Input:
 ```
@@ -30,6 +30,24 @@ Expected Output:
 ```
 1 3 N
 5 1 E
+```
+
+## Executing
+
+The following commands will test and compile the MarsRover solution.
+
+```bash
+# Run the unit tests
+dotnet test MarsRover.Tests/MarsRover.Tests.csproj
+
+# Run the MarsRover program with the sample input file
+cat test_input.txt | dotnet run --project MarsRover/MarsRover.csproj
+
+# Compile to a standalone exe program
+dotnet publish MarsRover/MarsRover.csproj --output ../published --self-contained --runtime win-x64
+
+# Test the compiled application
+cat test_input.txt | ./published/MarsRover.exe
 ```
 
 ## LICENSE
