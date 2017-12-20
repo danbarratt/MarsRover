@@ -8,26 +8,25 @@ namespace MarsRover
     {
         static void Main()
         {
-            InputReader reader = new InputReader();
-
-            var rovers = reader.Parse(ReadInput());
+            var rovers = new InputReader().Parse(ReadConsole());
 
             string output = new OutputWriter().Write(rovers);
 
             Console.WriteLine(output);
         }
 
-        private static string ReadInput()
+        private static string ReadConsole()
         {
+            if (Console.IsInputRedirected == false) {
+                Console.WriteLine("Enter MarsRover input data (can be multi-line, enter blank line to process instructions):");
+            }
+
             StringBuilder sb = new StringBuilder();
+            String input = Console.ReadLine();
 
-            if (Console.IsInputRedirected)
-            {
-                String input;
-
-                while ((input = Console.ReadLine()) != null) {
-                    sb.AppendLine(input);
-                }
+            while (string.IsNullOrWhiteSpace(input) == false) {
+                sb.AppendLine(input);
+                input = Console.ReadLine();
             }
 
             return sb.ToString();
