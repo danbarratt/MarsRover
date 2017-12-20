@@ -27,6 +27,16 @@ namespace MarsRover.Tests
         }
 
         [Fact]
+        public void when_given_valid_input_with_trailing_newline() 
+        {
+            string input = "1 1" + Environment.NewLine;
+
+            var rovers = new InputReader().Parse(input);
+
+            Assert.Empty(rovers);
+        }
+
+        [Fact]
         public void when_given_valid_input_and_one_rover()
         {
             string input = @"1 1

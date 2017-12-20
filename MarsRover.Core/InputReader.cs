@@ -10,6 +10,9 @@ namespace MarsRover.Core
         {
             var inputLines = SplitOn(input, Environment.NewLine);
 
+            if (inputLines.Any() == false)
+                yield break;
+
             Plateau plateau = new Plateau(inputLines.Dequeue());
 
             while (inputLines.Count > 0)
@@ -35,7 +38,8 @@ namespace MarsRover.Core
                 input = input.Substring(index + separator.Length);
             }
 
-            toReturn.Enqueue(input);
+            if (string.IsNullOrWhiteSpace(input) == false)
+                toReturn.Enqueue(input);
 
             return toReturn;
         }
